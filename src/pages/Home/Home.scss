@@ -1,0 +1,68 @@
+.home {
+  overflow: hidden;
+  position: relative;
+
+
+  .img {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 100%;
+  }
+  ::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, rgba(34, 11, 53,0.7),rgba(20, 5, 53, 0.7),rgba(12, 2, 39, 0.8),rgb(5, 1, 19));
+    top: 0;
+    left: -100%;
+    z-index: -1;
+    transform: skewX(45deg);
+  }
+  :hover::before {
+    width: 300%;
+    transition: all 0.4s;
+  }
+  .detail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.8);
+    transition: all 0.4s;
+    z-index: 100;
+    a {
+      font-size: 20px;
+      margin: 10px 0;
+      font-weight: 900;
+      letter-spacing: 3px;
+      
+    }
+  }
+
+  
+  &:hover .detail {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  
+}
+.pagination{
+  color: rgb(83, 34, 34);
+  display: flex;
+  justify-content: center;
+  align-items: center;;
+    
+
+}

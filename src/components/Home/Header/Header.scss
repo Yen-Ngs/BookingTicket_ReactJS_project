@@ -1,0 +1,28 @@
+.navbar{
+    // background: linear-gradient(to right,rgb(34, 11, 53),rgba(20, 5, 53, 0.7),rgba(12, 2, 39, 0.8),rgb(5, 1, 19))!important;
+    margin-bottom: 5px;
+    background-color: transparent !important;
+    
+    .navbar-brand{
+        margin-right: 80px !important;
+        font-size: 30px;
+        font-weight: 600;
+        font-family: fantasy;
+    }
+    .nav-link{
+        margin-left:30px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+    .activeNavItem{
+        background-color: white;
+        color:#343a40 !important;
+        font-weight: 500;
+        font-family: fantasy;
+        font-size: 30px;
+        
+        
+
+    }
+    
+}
