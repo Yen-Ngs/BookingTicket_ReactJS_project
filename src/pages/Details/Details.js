@@ -3,7 +3,9 @@ import { useDispatch, useSelector, } from 'react-redux'
 import { getDetails } from '../../redux/actions/MovieAction'
 import moment from 'moment'
 import { NavLink } from 'react-router-dom'
+import BookingTicket from '../BookingTicket/BookingTicket'
 import './Details.scss'
+
 
 export default function Details(props) {
     const { movieDetails } = useSelector(state => state.MovieReducer)
@@ -95,7 +97,7 @@ export default function Details(props) {
                                         <h3>{cumRap.tenCumRap}</h3>
                                         <div className="row">
                                             {cumRap.lichChieuPhim?.slice(0, 8).map((lichChieu, index) => {
-                                                return <NavLink className="col-3 text-success" to={`/checkout/${lichChieu.maLichChieu}`}>
+                                                return <NavLink className="col-3 text-success" to={`/bookingticket/${lichChieu.maLichChieu}`}>
                                                     {moment(lichChieu.ngayChieuGioChieu).format('hh:mm A')}
                                                 </NavLink>
                                             })}

@@ -5,8 +5,10 @@ import {history} from '../../App'
 
 
 export const logInAction =(user)=>{
+    console.log(user.account);
     return async (dispatch)=>{
         try{
+            
             const result= await axios ({
                 url:`${domain}/api/QuanLyNguoiDung/DangNhap`,
                 method:'POST',

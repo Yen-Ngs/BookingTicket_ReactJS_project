@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router';
 import Header from "../components/Home/Header/Header"
+import Footer from "../components/Home/Footer/Footer"
 
 export const HomeTemplate = (props)=>{
     let {Component,...restRoute} = props;
@@ -9,6 +10,7 @@ export const HomeTemplate = (props)=>{
         return <div>
             <Header/>
             <Component {...propsRoute}/>
+            <Footer/>
         </div>
     }}></Route>
 }

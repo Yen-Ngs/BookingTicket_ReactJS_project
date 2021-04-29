@@ -13,6 +13,7 @@ import BookingTicket from './pages/BookingTicket/BookingTicket';
 import Register from './pages/Register/Register'
 import { HomeTemplate } from './templates/HomeTemplate';
 import { createBrowserHistory } from 'history'
+import { AdminTemplate } from './templates/AdminTemplate';
 
 export const history = createBrowserHistory()
 
@@ -28,7 +29,7 @@ function App() {
           <HomeTemplate exact path='/services' Component={Service} />
           <HomeTemplate exact path='/login' Component={Login} />
           <HomeTemplate exact path='/details/:id' Component={Details} />
-          <HomeTemplate exact path='/bookingticket' Component={BookingTicket} />
+          <HomeTemplate exact path='/bookingticket/:id' Component={BookingTicket} />
           <HomeTemplate exact path='/register' Component={Register} />
 
 

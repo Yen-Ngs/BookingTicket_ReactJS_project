@@ -1,27 +1,29 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import{withFormik, useFormik} from 'formik'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import './Login.scss'
 import { logInAction } from '../../redux/actions/UserAction';
 
 
 export default function Login(props) {
     const Bgline = 'linear-gradient(to bottom,rgba(62,33,86,0.6),rgba(62,34,124,0.7),rgba(61,36,126,0.8),rgba(63,40,134,1)'
-
+    const {history} = useHistory();
     const dispatch = useDispatch();
-    const {handleSubmit} =  useFormik({
+    const formik =  useFormik({
         initialValues:{
             account:'',
             password:'',
         },
         onSubmit:values=>{
-            dispatch(logInAction(values))
+            console.log(values);
+            dispatch(logInAction(values));
+            history.push('/home');
         }
     })
     
     return (
-        <section className="ftco-section login" onSubmit={handleSubmit}>
+        <section className="ftco-section login" >
             <div className="container text-white" >
                 <div className="row justify-content-center mt-5">
                     <div className="col-md-12 col-lg-10">
@@ -41,18 +43,19 @@ export default function Login(props) {
                                     </div>
                                     
                                 </div>
-                                <form action="#" className="signin-form" bg={Bgline}>
+                                <form action="#" className="signin-form" bg={Bgline} onSubmit={formik.handleSubmit}>
                                     <div className="form-group mb-3">
                                         <label className="label" htmlFor="name" >Username</label>
-                                        <input type="text" className="form-control" placeholder="Username" required />
+                                        <input name="account" type="text" className="form-control" placeholder="Username" required values={formik.values.account} onChange={formik.handleChange}/>
                                     </div>
                                     <div className="form-group mb-3">
                                         <label className="label" htmlFor="password" >Password</label>
-                                        <input type="password" className="form-control" placeholder="Password" required />
+                                        <input name="password" type="password" className="form-control" placeholder="Password" required values={formik.values.password} onChange={formik.handleChange} />
                                     </div>
                                     <div className="form-group">
                                         <button type="submit"
-                                            className="form-control btn px-3">Sign In</button>
+                                            className="form-control btn px-3">Sign In
+                                    </button>
                                     </div>
                                     <div className="form-group d-md-flex">
                                         <div className="w-50 text-left">

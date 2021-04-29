@@ -4,13 +4,13 @@ import {RegisterInfor} from './RegisterInfor'
 import './Register.scss'
 
 
-export default class Register extends Component {
-    render() {
-        return (
-            <div className="registerform">
-                <SignUpForm/>
-                <RegisterInfor/>
-            </div>
-        )
-    }
+export default function Register(props) {
+    return (
+        <div className="register">
+            <SignUpForm/>
+            <RegisterInfor/>
+        </div>
+    )
 }
+
+

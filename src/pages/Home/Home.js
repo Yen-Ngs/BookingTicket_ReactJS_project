@@ -2,21 +2,61 @@ import React, { useState, useEffect } from 'react'
 import { connect, useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { getMovieAction } from '../../redux/actions/MovieAction'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./Home.scss";
 
 export function Home(props) {
+
+
     const arrFilms = useSelector(state => state.MovieReducer.arrFilms)
     const dispatch = useDispatch()
     const [page, setPage] = useState(1);
+    const { className, style, onClick } = props;
+    const settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
 
     const renderFilm = () => {
-        return arrFilms.slice(page * 10 - 10, page * 10).map((film, index) => {
-            return <div className="col-4 text-center" key={index}>
+        return arrFilms.map((film, index) => {
+            return <div className="text-center" key={index}>
                 <div className="home">
-                    <img className="card-img-top w-100 img" style={{ height: '250px' }} src={film.hinhAnh} alt={film.hinhAnh} />
+                    <img className="card-img-top w-100 img" src={film.hinhAnh} alt={film.hinhAnh} />
                     <div className="detail">
                         <NavLink className="text-white" to={`details/${film.maPhim}`}>READ MORE</NavLink>
-                        <span>Release: {film.ngayKhoiChieu}</span>
+                        <span>Release: {film.ngayChieu}</span>
                     </div>
                 </div>
                 <div className="card-body">
@@ -80,21 +120,44 @@ export function Home(props) {
                 </div>
             </div>
 
-            <div className="container showMovie">
-                <div className="text-center display-4"></div>
-                <div className="row mt-10">
+            <div className="container text-center ">
+                <h2 className="display-3"> Movie List</h2>
+                <Slider {...settings}>
                     {renderFilm()}
-                </div>
+                </Slider>
+            </div>
+            {/* <div className="container">
+                {renderPagination()}
+                
+            </div> */}
+            <div className="container mt-5">
+                <h2 className="display-4 m-5 text-center"> Promotion</h2>
+                <Slider {...settings}>
+                    <div>
+                        <img className="d-block w-100" style={{height:'168px'}} src="https://shoppingrechargeoffers.com/wp-content/uploads/2018/12/blockbuster-week-banner3.jpg" alt="First slide" />
+                    </div>
+                    <div>
+                        <img className="d-block w-100" src="https://www.bhdstar.vn/wp-content/uploads/2018/03/admin-ajax.jpeg" alt="Second slide" />
+                    </div>
+                    <div>
+                        <img className="d-block w-100" src="https://www.bhdstar.vn/wp-content/uploads/2017/03/BHDStar-Movie365_710x320.jpg" alt="Third slide" />
+                    </div>
+                    <div>
+                       <img className="d-block w-100" style={{height:'168px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                    </div>
+                    <div>
+                       <img className="d-block w-100" style={{height:'168px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                    </div>
+                </Slider>
             </div>
 
 
-            <nav aria-label="Page navigation example ">
-                <ul className="pagination">
-                    <li className="page-item"><a className="page-link" onClick={() => setPage(page - 1)}>Previous</a></li>
-                    {renderPagination()}
-                    <li className="page-item"><a className="page-link" onClick={() => setPage(page + 1)}>Next</a></li>
-                </ul>
-            </nav>
+
+
         </div>
+
+
+
+
     )
 }
