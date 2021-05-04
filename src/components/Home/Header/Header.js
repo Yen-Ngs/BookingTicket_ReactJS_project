@@ -18,12 +18,12 @@ export default function Header(props) {
                     <li className="nav-item">
                         <NavLink activeClassName="activeNavItem" className="nav-link" to="/contact">Contact</NavLink>
                     </li>
-                    <li className="nav-item dropdown">
-                        <NavLink activeClassName="activeNavItem" className="nav-link dropdown-toggle" to="/service" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</NavLink>
-                        <div className="dropdown-menu" aria-labelledby="dropdownId">
+                    <li className="nav-item">
+                        <NavLink activeClassName="activeNavItem" className="nav-link" to="/services">Services</NavLink>
+                        {/* <div className="dropdown-menu" aria-labelledby="dropdownId">
                             <NavLink activeClassName="activeNavItem" className="dropdown-item" to="#">Movies Schedule</NavLink>
                             <NavLink activeClassName="activeNavItem" className="dropdown-item" to="#">Food and Drinks</NavLink>
-                        </div>
+                        </div> */}
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">

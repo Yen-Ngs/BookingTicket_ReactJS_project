@@ -31,8 +31,6 @@ function App() {
           <HomeTemplate exact path='/details/:id' Component={Details} />
           <HomeTemplate exact path='/bookingticket/:id' Component={BookingTicket} />
           <HomeTemplate exact path='/register' Component={Register} />
-
-
           <HomeTemplate exact path="/" Component={Home} />
 
 

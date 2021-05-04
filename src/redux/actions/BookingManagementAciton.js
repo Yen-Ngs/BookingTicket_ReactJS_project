@@ -18,9 +18,8 @@ export const bookingTicketAction = (bookingInfor) => {
                 //call back action to get infor booking ticket 
                 dispatch(getInforTicketRoom(bookingInfor.maLichChieu))
             }
-
-
         } catch (errors) {
+            console.log(errors, "err")
         }
     }
 

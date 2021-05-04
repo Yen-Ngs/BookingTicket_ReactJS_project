@@ -13,14 +13,16 @@ export default function BookingTicket(props) {
     let { id } = props.match.params;
     useEffect(() => {
         dispatch(getInforTicketRoom(id))
-    }, [])
+    }, [dispatch])
+
+    // render lần đầu rỗng vì --> useEffect có [] = componentDidMout nên chạy lần 1 return arr rỗng
     const renderChair = () => {
+        console.log('render_1', ticketInfor)
         return ticketInfor.danhSachGhe?.map((item, index) => {
-            let indexBookingChair = bookingChairList.findIndex(gheDD => gheDD.maGhe === item.maGhe);
+            let indexBookingChair = bookingChairList.findIndex(isBooking => isBooking.maGhe === item.maGhe);
             let classBookingChair = indexBookingChair !== -1 ? 'bookingChair' : '';
             let classBookedChair = item.booked ? 'bookedChair' : '';
             let classVipChair = item.loaiGhe === 'Vip' ? 'VipChair' : '';
-
             return <Fragment key={index}>
                 <button className={`chair ${classBookingChair} ${classVipChair} ${classBookedChair}`} onClick={() => {
                     dispatch({
@@ -34,11 +36,12 @@ export default function BookingTicket(props) {
                 {(index + 1) % 16 === 0 ? <br /> : ''}
 
             </Fragment>
-
         })
     }
+
     const renderBookingChair = () => {
-        return bookingChairList.map((bookingItem, index) => {
+        console.log(bookingChairList, "chair_render")
+        return bookingChairList?.map((bookingItem, index) => {
             return <Fragment key={index}>
                 <span className="text-success">{bookingItem.stt}</span>
             </Fragment>
@@ -52,7 +55,7 @@ export default function BookingTicket(props) {
     if (!localStorage.getItem('account')) {
         return <Redirect to='/login' />
     }
-    console.log(ticketInfor, 'thong tin dat ve');
+    // console.log(ticketInfor, 'thong tin dat ve');
 
     return (
         <div className="container-fluid bg-dark">

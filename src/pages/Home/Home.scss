@@ -1,23 +1,27 @@
 .home {
   overflow: hidden;
   position: relative;
-
-
   .img {
     border-radius: 10px;
     overflow: hidden;
     position: relative;
     display: block;
     width: 100%;
-    height:300px;
-    padding-right:5px;
+    height: 300px;
+    padding-right: 5px;
   }
   ::before {
     content: "";
     position: absolute;
     height: 100%;
     width: 0;
-    background: linear-gradient(to right, rgba(34, 11, 53,0.7),rgba(20, 5, 53, 0.7),rgba(12, 2, 39, 0.8),rgb(5, 1, 19));
+    background: linear-gradient(
+      to right,
+      rgba(34, 11, 53, 0.7),
+      rgba(20, 5, 53, 0.7),
+      rgba(12, 2, 39, 0.8),
+      rgb(5, 1, 19)
+    );
     top: 0;
     left: -100%;
     z-index: -1;
@@ -48,25 +52,99 @@
       margin: 10px 0;
       font-weight: 900;
       letter-spacing: 3px;
-
     }
   }
 
-  
   &:hover .detail {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
   }
-  
 }
-.pagination{
-  color:white;
+.carousel {
+  .carousel-item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    ::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.1));
+      content: "";
+    }
+  }
+  .item1 {
+    background-image: url("https://dep.com.vn/wp-content/uploads/2019/04/Game-of-Thrones-13.jpg");
+    height: 600px;
+  }
+  .item2 {
+    background-image: url("https://i.ytimg.com/vi/rmPP-DRqEf0/maxresdefault.jpg");
+    height: 600px;
+  }
+  .item3 {
+    background-image: url("http://static1.squarespace.com/static/5e291ec46e9623666191acb7/t/5fc5953218e72e5fdb975bba/1606784312025/The-Queens-Gambit-Review-Netflix-tv-series.jpg?format=1500w");
+    height: 600px;
+  }
+  // ::before {
+  //   content: "The Queen of Gambit";
+  //   position: absolute;
+  //   height: 90%;
+  //   width: 0;
+  //   background: rgba($color: #1b1919, $alpha: 0.8);
+  //   top: 0;
+  //   left: -100%;
+  //   z-index: -1;
+  //   transform: skewX(45deg);
+  // }
+  // :hover::before {
+  //   width: 300%;
+  //   transition: all 0.4s;
+  // }
+  .detail1 {
+    left: 50%;
+    text-align: left;
+    bottom: initial;
+    padding-top: 50%;
+    transform: translate(-50%, -50%);
+    .button {
+      background-image: linear-gradient(to right, #fbbd61, #ec7532);
+      border: none;
+      padding: 10px 30px;
+      border-radius: 200px;
+      letter-spacing: 3px;
+    }
+    // p {
+    //   font-size: 50px;
+    //   margin: 10px 0;
+    //   font-weight: 900;
+    //   letter-spacing: 3px;
+
+    // }
+    // span {
+    //   font-size: 40px;
+    //   margin: 10px 0;
+    //   font-weight: 900;
+    //   letter-spacing: 3px;
+
+    // }
+  }
+
+  &:hover .detail {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+}
+.pagination {
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  
-  .page-link{
+
+  .page-link {
     background: transparent !important;
     border: none;
     cursor: pointer;
@@ -75,5 +153,3 @@
     padding-top: 15px;
   }
 }
-
-

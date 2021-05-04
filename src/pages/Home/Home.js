@@ -14,6 +14,13 @@ export function Home(props) {
     const dispatch = useDispatch()
     const [page, setPage] = useState(1);
     const { className, style, onClick } = props;
+    const settings1 = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        }
     const settings = {
         dots: true,
         infinite: false,
@@ -92,33 +99,55 @@ export function Home(props) {
     return (
         <div className="text-white movie">
             <div>
-                <div id="carouselExampleIndicators" className="carousel slide" style={{ height: '900px' }} data-ride="carousel">
+                <div id="carousel" className="carousel slide" style={{ height: '700px' }} data-ride="carousel">
                     <ol className="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to={0} className="active" />
-                        <li data-target="#carouselExampleIndicators" data-slide-to={1} />
-                        <li data-target="#carouselExampleIndicators" data-slide-to={2} />
+                        <li data-target="#carousel" data-slide-to={0} className="active" />
+                        <li data-target="#carousel" data-slide-to={1} />
+                        <li data-target="#carousel" data-slide-to={2} />
                     </ol>
                     <div className="carousel-inner ">
-                        <div className="carousel-item active">
-                            <img className="d-block w-100" src="https://gaumeothuckhuya.files.wordpress.com/2020/11/emily-in-paris-news.jpg" alt="First slide" />
+                        <div className="carousel-item active item1">
+                            {/* <img className="d-block w-100"  style={{ height: '500px' }} src="https://dep.com.vn/wp-content/uploads/2019/04/Game-of-Thrones-13.jpg" alt="First slide" /> */}
+                            <div className="details1">
+                                <p>Game of Thrones</p><br/>
+                                <span>Type: Cerbral, Intimate, Emotion</span><br/>
+                                <span>Cast: Anya Taylor‑Joy, Harry Melling, Thomas Brodie, Jacob Fortune</span><br/>
+                                <span>Rate: 8/10 ⭐️</span>
+                                <button class="text-white button"> <i class="fa fa-play"></i>Play Trailer</button>
+                            </div>
                         </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src="http://thatnerdshow.com/site/wp-content/uploads/2021/03/ChaosWalkingbanner.jpg" alt="Second slide" />
+                        <div className="carousel-item item2">
+                            {/* <img className="d-block w-100" style={{ height: '500px' }} src="https://i.ytimg.com/vi/rmPP-DRqEf0/maxresdefault.jpg" alt="Second slide" /> */}
+                            <div className="details1">
+                                <p>The Father</p><br/>
+                                <span>Type: Family, Emotion</span><br/>
+                                <span>Cast: Tran Thanh, Ngoc Giau, Le Giang, Truc Nhan</span><br/>
+                                <span>Rate: 8/10 ⭐️</span>
+                                <button class="text-white"> <i class="fa fa-play"></i>Play Trailer</button>
+                            </div>
                         </div>
-                        <div className="carousel-item">
-                            <img className="d-block w-100" src="https://media.vov.vn/sites/default/files/styles/front_large/public/2021-02/Untitled_44.jpg" alt="Third slide" />
+                        <div className="carousel-item item3">
+                            {/* <img className="d-block w-100" style={{ height: '500px' }} src="http://static1.squarespace.com/static/5e291ec46e9623666191acb7/t/5fc5953218e72e5fdb975bba/1606784312025/The-Queens-Gambit-Review-Netflix-tv-series.jpg?format=1500w" alt="Third slide" /> */}
+                            <div className="details1">
+                                <p>The Queen of Gambit</p><br/>
+                                <span>Type: Cerbral, Intimate, Emotion</span><br/>
+                                <span>Cast: Anya Taylor‑Joy, Harry Melling, Thomas Brodie, Jacob Fortune</span><br/>
+                                <span>Rate: 9/10 ⭐️</span>
+                                <button class="text-white"> <i class="fa fa-play"></i>Play Trailer</button>
+                            </div>
                         </div>
                     </div>
-                    <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <a className="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true" />
                         <span className="sr-only">Previous</span>
                     </a>
-                    <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <a className="carousel-control-next" href="#carousel" role="button" data-slide="next">
                         <span className="carousel-control-next-icon" aria-hidden="true" />
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
             </div>
+            
 
             <div className="container text-center ">
                 <h2 className="display-3"> Movie List</h2>
@@ -126,10 +155,6 @@ export function Home(props) {
                     {renderFilm()}
                 </Slider>
             </div>
-            {/* <div className="container">
-                {renderPagination()}
-                
-            </div> */}
             <div className="container mt-5">
                 <h2 className="display-4 m-5 text-center"> Promotion</h2>
                 <Slider {...settings}>
@@ -150,6 +175,8 @@ export function Home(props) {
                     </div>
                 </Slider>
             </div>
+
+            
 
 
 

@@ -39,18 +39,19 @@ export const getDetails = (idFilm) => {
     }
 
 }
+
 export const getInforTicketRoom = (maLichChieu) => {
     return async (dispatch) => {
         try {
             const result = await axios({
-                url: `${domain}/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
-                ,
+                url: `${domain}/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
                 method: 'GET'
             });
             dispatch({
                 type: 'GET_INFOR_TICKET_ROOM',
-                ticketInfor: result.data
-            })
+                ticketInfor: result.data,
+            }, console.log("get infor ticked 2", result.data))
+
 
         } catch (error) {
             console.log('error', error);
