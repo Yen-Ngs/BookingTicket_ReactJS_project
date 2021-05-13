@@ -1,3 +1,14 @@
+.slick-prev:before, .slick-next:before {
+  display: block;
+  width:30px;
+  height:80px;
+  font-size:30px;
+  background:black;
+  left: -14px;
+    top: -60px;
+    position: absolute;
+}
+
 .home {
   overflow: hidden;
   position: relative;
@@ -6,7 +17,7 @@
     overflow: hidden;
     position: relative;
     display: block;
-    width: 100%;
+    width: 75%;
     height: 300px;
     padding-right: 5px;
   }
@@ -15,13 +26,7 @@
     position: absolute;
     height: 100%;
     width: 0;
-    background: linear-gradient(
-      to right,
-      rgba(34, 11, 53, 0.7),
-      rgba(20, 5, 53, 0.7),
-      rgba(12, 2, 39, 0.8),
-      rgb(5, 1, 19)
-    );
+    background-color: rgba($color: #000000, $alpha: 0.5);
     top: 0;
     left: -100%;
     z-index: -1;
@@ -66,15 +71,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    ::before {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.1));
-      content: "";
-    }
   }
   .item1 {
     background-image: url("https://dep.com.vn/wp-content/uploads/2019/04/Game-of-Thrones-13.jpg");
@@ -88,27 +84,18 @@
     background-image: url("http://static1.squarespace.com/static/5e291ec46e9623666191acb7/t/5fc5953218e72e5fdb975bba/1606784312025/The-Queens-Gambit-Review-Netflix-tv-series.jpg?format=1500w");
     height: 600px;
   }
-  // ::before {
-  //   content: "The Queen of Gambit";
-  //   position: absolute;
-  //   height: 90%;
-  //   width: 0;
-  //   background: rgba($color: #1b1919, $alpha: 0.8);
-  //   top: 0;
-  //   left: -100%;
-  //   z-index: -1;
-  //   transform: skewX(45deg);
-  // }
-  // :hover::before {
-  //   width: 300%;
-  //   transition: all 0.4s;
-  // }
+  
   .detail1 {
-    left: 50%;
-    text-align: left;
     bottom: initial;
-    padding-top: 50%;
+    margin-top: 50%;
     transform: translate(-50%, -50%);
+    animation-name: bounce;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+    box-sizing: border-box;
+    border: 1px solid black;
+
     .button {
       background-image: linear-gradient(to right, #fbbd61, #ec7532);
       border: none;
@@ -116,20 +103,6 @@
       border-radius: 200px;
       letter-spacing: 3px;
     }
-    // p {
-    //   font-size: 50px;
-    //   margin: 10px 0;
-    //   font-weight: 900;
-    //   letter-spacing: 3px;
-
-    // }
-    // span {
-    //   font-size: 40px;
-    //   margin: 10px 0;
-    //   font-weight: 900;
-    //   letter-spacing: 3px;
-
-    // }
   }
 
   &:hover .detail {
@@ -152,4 +125,11 @@
     font-weight: 900;
     padding-top: 15px;
   }
+}
+@media screen and (max-width: 1200px){
+  .carousel-inner{
+    height: 300px;
+    width:100%;
+  }
+
 }

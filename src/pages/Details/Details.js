@@ -17,10 +17,10 @@ export default function Details(props) {
     return (
         <div>
             <div className="container text-white">
-                <h2 className="display-3">Movie Details</h2>
                 <div className="row mt-5">
-                    <div className="col-6">
-                        <img src={movieDetails.hinhAnh} className="w-100" alt="123"></img>
+                    <div className="col-1"></div>
+                    <div className="col-4">
+                        <img src={movieDetails.hinhAnh} className="w-75" alt="123"></img>
                     </div>
                     <div className="col-6 ">
                         <table className="table mt-10 text-white">
@@ -50,21 +50,8 @@ export default function Details(props) {
                                 </tr>
                                 <tr>
                                     <a className="btn btn-danger m-3" href={`${movieDetails.trailer}`} data-toggle="modal" data-target="#exampleModalCenter">Trailer</a>
-
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
                         </table>
                     </div>
                 </div>

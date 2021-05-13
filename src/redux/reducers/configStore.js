@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     LoadingReducer: LoadingReducer,
     BookingTicketReducer: BookingTicketReducer,
     RegisterReducer:RegisterReducer,
-    CartReducer:CartReducer
+    // CartReducer:CartReducer
 })
 
 

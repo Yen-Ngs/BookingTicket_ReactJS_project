@@ -14,6 +14,7 @@ import Register from './pages/Register/Register'
 import { HomeTemplate } from './templates/HomeTemplate';
 import { createBrowserHistory } from 'history'
 import { AdminTemplate } from './templates/AdminTemplate';
+import Loading from './components/Loading/Loading'
 
 export const history = createBrowserHistory()
 
@@ -22,9 +23,10 @@ function App() {
     <Router history={history}>
       <div className="App">
         {/* <Header/> */}
+        <Loading />
         <Switch>
           <HomeTemplate exact path='/home' Component={Home} />
-          <HomeTemplate exact path='/contact' Component={Contact} />
+          <AdminTemplate exact path='/contact' Component={Contact} />
           <HomeTemplate exact path='/about' Component={About} />
           <HomeTemplate exact path='/services' Component={Service} />
           <HomeTemplate exact path='/login' Component={Login} />

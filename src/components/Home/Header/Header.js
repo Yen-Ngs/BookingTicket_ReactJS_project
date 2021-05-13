@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { useSelector } from 'react-redux';
 import {NavLink} from 'react-router-dom'
 import './Header.scss'
 
 export default function Header(props) {
+//     const {filmDetails} = useSelector(state => state.movieReducer)
+//     const [searchTerm, setSearchTerm] = React.useState();
+//  const [searchResults, setSearchResults] = React.useState([]);
+//  const handleChange = event => {
+//     setSearchTerm(event.target.value);
+//   };
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
             <NavLink className="navbar-brand" to="/home">PANDA CINEMNA</NavLink>
@@ -20,10 +27,6 @@ export default function Header(props) {
                     </li>
                     <li className="nav-item">
                         <NavLink activeClassName="activeNavItem" className="nav-link" to="/services">Services</NavLink>
-                        {/* <div className="dropdown-menu" aria-labelledby="dropdownId">
-                            <NavLink activeClassName="activeNavItem" className="dropdown-item" to="#">Movies Schedule</NavLink>
-                            <NavLink activeClassName="activeNavItem" className="dropdown-item" to="#">Food and Drinks</NavLink>
-                        </div> */}
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">

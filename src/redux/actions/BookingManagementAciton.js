@@ -14,10 +14,11 @@ export const bookingTicketAction = (bookingInfor) => {
             });
             if (result.status === 200) {
                 alert('Booking Successfully!');
-                history.push(`/checkout/${bookingInfor.maLichChieu}`)
+                history.push(`/bookingticket/${bookingInfor.maLichChieu}`)
                 //call back action to get infor booking ticket 
                 dispatch(getInforTicketRoom(bookingInfor.maLichChieu))
             }
+            console.log(result);
         } catch (errors) {
             console.log(errors, "err")
         }

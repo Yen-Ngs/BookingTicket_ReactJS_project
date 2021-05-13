@@ -1,13 +1,15 @@
 .details{
     color:white;
+    background-color: rgba($color: #000000, $alpha: 0.8)!important;
+
     img{
-        height: 200px;
+        height: 100px;
     }
 
 
 }
 .infor_ticket{
-    background: linear-gradient(to right,rgba(34, 11, 53,0.5),rgba(20, 5, 53, 0.7),rgba(12, 2, 39, 0.8),rgb(5, 1, 19))!important;
+    background-color: rgba($color: #000000, $alpha: 0.8)!important;
     color: white;
 
 }

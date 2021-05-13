@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react'
-import {useSelector} from 'react-redux'
-import {LoadingReducer} from '../../redux/reducers/LoadingReducer'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
-export default function Loading(props) {
-    const loading = useSelector(state=state.LoadingReducer)
-    renderLoading =() =>{
-        if(loading === true){
+class Loading extends Component {
+
+    renderLoading = () => {
+        if (this.props.loading) {
             return <div style={{ position: 'fixed', width: '100%', height: '100%', top: 0, left: 0, zIndex: 100 }}>
             <div style={{
                 width: '100%', height: '100%', display: 'flex', flexDirection: 'row',
@@ -19,11 +18,21 @@ export default function Loading(props) {
         return '';
 
     }
+
+
+
+    render() {
+        return (
+            <div>
+                {this.renderLoading()}
+            </div>
+        )
+    }
 }
 
-    return (
-        <div>
-            {renderLoading()}
-        </div>
-    )
+const mapStateToProps = (state) => {
+    return { loading: state.LoadingReducer.loading }
 
+}
+
+export default connect(mapStateToProps)(Loading)

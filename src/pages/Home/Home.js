@@ -7,26 +7,88 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Home.scss";
 
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{display: "block",
+        width:"10px",
+        height:"40px",
+        fontSize:"40px",
+        background:"black"
+    }}
+        onClick={onClick}
+      />
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{display: "block",
+        width:"30px",
+        height:"60px",
+        fontSize:"40px",
+        background:"black"}}
+        onClick={onClick}
+      />
+    );
+  }
 export function Home(props) {
 
 
     const arrFilms = useSelector(state => state.MovieReducer.arrFilms)
+    
+
     const dispatch = useDispatch()
     const [page, setPage] = useState(1);
-    const { className, style, onClick } = props;
     const settings1 = {
         dots: true,
         infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        }
+        nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
+      initialSlide: 0,
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3,
+              infinite: true,
+              dots: true
+            }
+          },
+          {
+            breakpoint: 600,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              initialSlide: 2
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      };
     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
-        slidesToScroll: 3,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
         initialSlide: 0,
         responsive: [
           {
@@ -60,10 +122,10 @@ export function Home(props) {
         return arrFilms.map((film, index) => {
             return <div className="text-center" key={index}>
                 <div className="home">
-                    <img className="card-img-top w-100 img" src={film.hinhAnh} alt={film.hinhAnh} />
+                <img className="card-img-top w-100 img" src={film.hinhAnh} alt={film.hinhAnh} />
                     <div className="detail">
                         <NavLink className="text-white" to={`details/${film.maPhim}`}>READ MORE</NavLink>
-                        <span>Release: {film.ngayChieu}</span>
+                        <span>Release: {film.ngayKhoiChieu.substr(0,10)}</span>
                     </div>
                 </div>
                 <div className="card-body">
@@ -98,8 +160,7 @@ export function Home(props) {
 
     return (
         <div className="text-white movie">
-            <div>
-                <div id="carousel" className="carousel slide" style={{ height: '700px' }} data-ride="carousel">
+            <div id="carousel" className="carousel slide" style={{ height: '700px' }} data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carousel" data-slide-to={0} className="active" />
                         <li data-target="#carousel" data-slide-to={1} />
@@ -146,9 +207,6 @@ export function Home(props) {
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
-            </div>
-            
-
             <div className="container text-center ">
                 <h2 className="display-3"> Movie List</h2>
                 <Slider {...settings}>
@@ -159,32 +217,22 @@ export function Home(props) {
                 <h2 className="display-4 m-5 text-center"> Promotion</h2>
                 <Slider {...settings}>
                     <div>
-                        <img className="d-block w-100" style={{height:'168px'}} src="https://shoppingrechargeoffers.com/wp-content/uploads/2018/12/blockbuster-week-banner3.jpg" alt="First slide" />
+                        <img className="d-block w-100" style={{height:'220px'}} src="https://shoppingrechargeoffers.com/wp-content/uploads/2018/12/blockbuster-week-banner3.jpg" alt="First slide" />
                     </div>
                     <div>
-                        <img className="d-block w-100" src="https://www.bhdstar.vn/wp-content/uploads/2018/03/admin-ajax.jpeg" alt="Second slide" />
+                        <img className="d-block w-100" style={{height:'220px'}} src="https://www.bhdstar.vn/wp-content/uploads/2018/03/admin-ajax.jpeg" alt="Second slide" />
                     </div>
                     <div>
-                        <img className="d-block w-100" src="https://www.bhdstar.vn/wp-content/uploads/2017/03/BHDStar-Movie365_710x320.jpg" alt="Third slide" />
+                        <img className="d-block w-100" style={{height:'220px'}} src="https://www.bhdstar.vn/wp-content/uploads/2017/03/BHDStar-Movie365_710x320.jpg" alt="Third slide" />
                     </div>
                     <div>
-                       <img className="d-block w-100" style={{height:'168px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                       <img className="d-block w-100" style={{height:'220px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
                     </div>
                     <div>
-                       <img className="d-block w-100" style={{height:'168px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                       <img className="d-block w-100" style={{height:'220px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
                     </div>
                 </Slider>
             </div>
-
-            
-
-
-
-
         </div>
-
-
-
-
     )
-}
+    }

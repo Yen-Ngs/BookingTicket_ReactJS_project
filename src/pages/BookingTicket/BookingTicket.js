@@ -13,7 +13,7 @@ export default function BookingTicket(props) {
     let { id } = props.match.params;
     useEffect(() => {
         dispatch(getInforTicketRoom(id))
-    }, [dispatch])
+    }, [])
 
     // render lần đầu rỗng vì --> useEffect có [] = componentDidMout nên chạy lần 1 return arr rỗng
     const renderChair = () => {
@@ -21,10 +21,11 @@ export default function BookingTicket(props) {
         return ticketInfor.danhSachGhe?.map((item, index) => {
             let indexBookingChair = bookingChairList.findIndex(isBooking => isBooking.maGhe === item.maGhe);
             let classBookingChair = indexBookingChair !== -1 ? 'bookingChair' : '';
-            let classBookedChair = item.booked ? 'bookedChair' : '';
+            let classBookedChair = item.daDat ? 'bookedChair' : '';
+            console.log(item.daDat);
             let classVipChair = item.loaiGhe === 'Vip' ? 'VipChair' : '';
             return <Fragment key={index}>
-                <button className={`chair ${classBookingChair} ${classVipChair} ${classBookedChair}`} onClick={() => {
+                <button className={`chair ${classBookingChair} ${classVipChair} ${classBookedChair}`} disabled={item.daDat} onClick={() => {
                     dispatch({
                         type: 'BOOKING_CHAIR',
                         item

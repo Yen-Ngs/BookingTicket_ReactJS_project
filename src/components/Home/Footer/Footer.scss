@@ -1,20 +1,41 @@
-.footer{
-    background: black !important;
-    margin-top: 100px;
-    .col-4-item1{
-        margin-top: 10px;
+.contentinfor {
+  display: flex;
+  margin-top: 50px;
+  box-sizing: border-box;
+  color: white !important;
+  padding-right: 15px;
+  a {
+    background-color: transparent !important;
+    font-size: 15px;
+    margin-right: 10px !important;
+    color: white !important;
+    text-decoration: none;
+    margin-left: 100px;
+  }
+}
+.footer {
+  background: black;
+  margin-top: 30px;
+
+  .col-item1 {
+    p {
+      font-size: 25px;
+      margin-top: 20px;
     }
-    p{
+    .col-4-item1 {
+      margin-top: 10px;
+      p {
         font-size: 25px;
-        margin-top:10px
-    }
-    span{
+        margin-top: 10px;
+      }
+      span {
         margin-left: 5px !important;
-    }
-    .aboutUS{
-        .col-icon{
-            margin-right: 5px !important;
+      }
+      .aboutUS {
+        .col-icon {
+          margin-right: 5px !important;
         }
+      }
     }
-    
+  }
 }
