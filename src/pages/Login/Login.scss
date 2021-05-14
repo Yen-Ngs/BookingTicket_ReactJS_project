@@ -1,9 +1,10 @@
+
 .login{
    .login-wrap{
        padding:20px !important;
        width:50%;
     h3{
-        color:white;
+        color:whitesmoke;
         width: 100%;
         font-size: 40px;
     }
@@ -29,5 +30,8 @@
        color:white;
 
    }
+
+}
+@media screen and (max-width: 1200px){
 
 }

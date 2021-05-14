@@ -16,14 +16,15 @@ export default function Details(props) {
     }, [])
     return (
         <div>
-            <div className="container text-white">
+            <div className="container text-white details">
                 <div className="row mt-5">
-                    <div className="col-1"></div>
-                    <div className="col-4">
-                        <img src={movieDetails.hinhAnh} className="w-75" alt="123"></img>
+                    
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                        <img src={movieDetails.hinhAnh} className="w-100" alt="123"></img>
                     </div>
-                    <div className="col-6 ">
-                        <table className="table mt-10 text-white">
+                    <div className="col-1"></div>
+                    <div className="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                        <table className="table mt-10 text-white text-center">
                             <thead>
                                 <tr>
                                     <th>Movie Name</th>

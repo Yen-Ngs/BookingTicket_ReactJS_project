@@ -33,7 +33,7 @@ export default function Login(props) {
                                 <div className="text w-100">
                                     <h3>Welcome to login</h3>
                                     <p>Don't have an account?</p>
-                                    <NavLink to="/regiser" className="signup px-4 py-2">Sign Up</NavLink>
+                                    <NavLink to="/register" className="signup px-4 py-2">Sign Up</NavLink>
                                 </div>
                             </div>
                             <div className="login-wrap p-4 p-lg-5 text-dark">

@@ -59,7 +59,7 @@ export default function BookingTicket(props) {
     // console.log(ticketInfor, 'thong tin dat ve');
 
     return (
-        <div className="container-fluid bg-dark">
+        <div className="container-fluid">
 
             <div className="row">
                 <div className="col-8 text-center mt-5">

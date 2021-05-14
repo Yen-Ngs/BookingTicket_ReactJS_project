@@ -71,12 +71,12 @@ export default function Footer(props) {
             </footer>
             <div className="container">
                 <div className="row contentinfor">
-                        <div className="col-3 col-sm-3 col-md-3 col-lg-4 col-xl-4">
-                            <a href="/home" target="_blank"> Check Gift Card Balance</a>
+                        <div className="col-3 col-sm-3 col-md-3 col-lg-2 col-xl-2">
+                            <a href="/home" target="_blank"> Contact</a>
                             </div>
-                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4"><a href="/home" target="_blank">Help</a></div>
-                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4"><a href="/about" target="_blank">About</a></div>
-                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4"><a href="/about">Careers</a></div>
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-2"><a href="/home" target="_blank">Help</a></div>
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-2"><a href="/about" target="_blank">About</a></div>
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-2"><a href="/about">Careers</a></div>
                         <div><a href="https://www.fandango.com/donotsellmyinfo">Do Not Sell My Info</a></div>
 
                 </div>

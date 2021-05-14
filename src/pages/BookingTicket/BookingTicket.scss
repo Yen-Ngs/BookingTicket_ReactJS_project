@@ -6,16 +6,20 @@
     background: rgb(104,101, 101);
     color: white;
     cursor:pointer;
+    background-image: url('../../assets/img/standard2.png');
     
 }       
 .bookedChair{
     background: rgb(143, 102, 27)!important;
+    background-image: url('../../assets/img/standard2.png');
     cursor: no-drop;
     
 }
 .bookingChair{
+    background-image: url('../../assets/img/standard2.png');
     background:rgb(9, 119, 37)!important;
 }
 .VipChair{
+    background-image: url('../../assets/img/standard2.png');
     background: rgb(165, 37, 5) !important;
 }
