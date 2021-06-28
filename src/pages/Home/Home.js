@@ -16,7 +16,9 @@ function SampleNextArrow(props) {
         width:"10px",
         height:"40px",
         fontSize:"40px",
-        background:"black"
+        background:"transparent",
+        color:"white"
+
     }}
         onClick={onClick}
       />
@@ -32,11 +34,14 @@ function SampleNextArrow(props) {
         width:"30px",
         height:"60px",
         fontSize:"40px",
-        background:"black"}}
+        background:"transparent",
+        color:"white"}}
+        
         onClick={onClick}
       />
     );
   }
+  
 export function Home(props) {
 
 
@@ -49,8 +54,8 @@ export function Home(props) {
         dots: true,
         infinite: false,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
+        slidesToShow: 3,
+        slidesToScroll: 3,
         nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
       initialSlide: 0,
@@ -83,10 +88,14 @@ export function Home(props) {
       };
     const settings = {
         dots: true,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+          className: "center",
+          centerMode: true,
+          infinite: true,
+          centerPadding: "100px",
+          slidesToShow: 2,
+          speed: 500,
+          rows: 2,
+          slidesPerRow: 2,
         nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
         initialSlide: 0,
@@ -121,14 +130,14 @@ export function Home(props) {
     const renderFilm = () => {
         return arrFilms.map((film, index) => {
             return <div className="text-center" key={index}>
-                <div className="home">
+                <div className="home pr-2 pt-3">
                 <img className="card-img-top w-100 img" src={film.hinhAnh} alt={film.hinhAnh} />
                     <div className="detail">
                         <NavLink className="text-white" to={`details/${film.maPhim}`}>READ MORE</NavLink>
                         <span>Release: {film.ngayKhoiChieu.substr(0,10)}</span>
                     </div>
                 </div>
-                <div className="card-body">
+                <div className="card-body pr-2">
                     <h4 className="card-title text-center">{film.tenPhim}</h4>
 
                     <NavLink className="btn text-white"
@@ -140,15 +149,15 @@ export function Home(props) {
         })
     }
 
-    const renderPagination = () => {
-        const pages = arrFilms.length / 10;
-        const buttons = [];
-        for (let i = 0; i < pages; i++) buttons.push(
-            <li className="page-item"><a className="page-link" onClick={() => setPage(i + 1)}>{i + 1}</a></li>
-        )
+    // const renderPagination = () => {
+    //     const pages = arrFilms.length / 10;
+    //     const buttons = [];
+    //     for (let i = 0; i < pages; i++) buttons.push(
+    //         <li className="page-item"><a className="page-link" onClick={() => setPage(i + 1)}>{i + 1}</a></li>
+    //     )
 
-        return (buttons)
-    }
+    //     return (buttons)
+    // }
 
     useEffect(() => {
         dispatch(getMovieAction())
@@ -213,23 +222,29 @@ export function Home(props) {
                     {renderFilm()}
                 </Slider>
             </div>
-            <div className="container mt-5">
-                <h2 className="display-4 m-5 text-center"> Promotion</h2>
-                <Slider {...settings}>
+            <div className="container promotion">
+                <h2 className="display-4 mb-5 text-center"> Promotion</h2>
+                <Slider {...settings1}>
                     <div>
-                        <img className="d-block w-100" style={{height:'220px'}} src="https://shoppingrechargeoffers.com/wp-content/uploads/2018/12/blockbuster-week-banner3.jpg" alt="First slide" />
+                        <img className="d-block w-100" style={{height:'290px'}} src="https://shoppingrechargeoffers.com/wp-content/uploads/2018/12/blockbuster-week-banner3.jpg" alt="First slide" />
                     </div>
                     <div>
-                        <img className="d-block w-100" style={{height:'220px'}} src="https://www.bhdstar.vn/wp-content/uploads/2018/03/admin-ajax.jpeg" alt="Second slide" />
+                       <img className="d-block w-100" style={{height:'290px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
                     </div>
                     <div>
-                        <img className="d-block w-100" style={{height:'220px'}} src="https://www.bhdstar.vn/wp-content/uploads/2017/03/BHDStar-Movie365_710x320.jpg" alt="Third slide" />
+                        <img className="d-block w-100" style={{height:'290px'}} src="https://www.bhdstar.vn/wp-content/uploads/2018/03/admin-ajax.jpeg" alt="Second slide" />
                     </div>
                     <div>
-                       <img className="d-block w-100" style={{height:'220px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                       <img className="d-block w-100" style={{height:'290px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
                     </div>
                     <div>
-                       <img className="d-block w-100" style={{height:'220px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                        <img className="d-block w-100" style={{height:'290px'}} src="https://www.bhdstar.vn/wp-content/uploads/2017/03/BHDStar-Movie365_710x290.jpg" alt="Third slide" />
+                    </div>
+                    <div>
+                       <img className="d-block w-100" style={{height:'290px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
+                    </div>
+                    <div>
+                       <img className="d-block w-100" style={{height:'290px'}} src="https://in.bmscdn.com/offers/tncbanner/get-instant-discount-of-upto-inr-125-on-movie-tickets-bms125.jpg?08092018221308" alt=""/>
                     </div>
                 </Slider>
             </div>

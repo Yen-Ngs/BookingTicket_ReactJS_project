@@ -1,16 +1,61 @@
-import React,{useState} from 'react'
-import { useSelector } from 'react-redux';
-import {NavLink} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
+import { account } from '../../../configs/setting';
+import { logInAction } from '../../../redux/actions/UserAction';
 import './Header.scss'
+import { history } from '../../../App'
 
 export default function Header(props) {
-//     const {filmDetails} = useSelector(state => state.movieReducer)
-//     const [searchTerm, setSearchTerm] = React.useState();
-//  const [searchResults, setSearchResults] = React.useState([]);
-//  const handleChange = event => {
-//     setSearchTerm(event.target.value);
-//   };
+    // let currentPage = props.history.pathname;
+   //Log out
+  const logout = () => {
+    localStorage.removeItem("User");
+    history.push('/')
+    // props.history.replace(props.history.pathname);
+  };
+
+  //Check login
+  const isLogin = () => {
+    if (localStorage.getItem("User")) {
+      let user = JSON.parse(localStorage.getItem("User"));
+      //Logged
+      return (
+        <div className="infor">
+          <div>
+          <a>
+            <span className="text-white btn btn-outline-white">
+              Hello{" "}
+              {user.hoTen}
+            </span>
+          </a>
+          </div>
+         
+            <div>
+            <a href="# "
+            className="text-white btn btn-outline-white"
+              style={{ cursor: "pointer" }}
+              onClick={logout}>Logout</a>
+            </div>
+        </div>
+      );
+    }
     return (
+        <NavLink
+          className="user d-flex align-items-center"
+        //   activeClassName="active"
+          exact
+          to={{
+            pathname: `/login`,
+            // preRequire: currentPage,
+            // prePage: currentPage
+          }}
+        >
+          <span className="text-white">Login</span>
+        </NavLink>
+      );
+}
+    return (
+
         <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
             <NavLink className="navbar-brand" to="/home">PANDA CINEMNA</NavLink>
             <button className="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation" />
@@ -25,16 +70,17 @@ export default function Header(props) {
                     <li className="nav-item">
                         <NavLink activeClassName="activeNavItem" className="nav-link" to="/contact">Contact</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink activeClassName="activeNavItem" className="nav-link" to="/services">Services</NavLink>
-                    </li>
+                    
                 </ul>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="text" placeholder="Search" />
-                    <button className="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                
+                <form >
+                <div className="mr-5 ml-5 btn btn-outline-light">{isLogin()}</div>
                 </form>
             </div>
         </nav>
 
+
     )
+
+
 }

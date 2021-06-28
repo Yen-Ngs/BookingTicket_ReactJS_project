@@ -1,12 +1,27 @@
-.slick-prev:before, .slick-next:before {
+@import '../../style/Helper/mixin.scss';
+@import '../../style/Helper/variable.scss';
+.slick-prev:before{
   display: block;
-  width:30px;
+  width:100px;
   height:80px;
-  font-size:30px;
-  background:black;
-  left: -14px;
-    top: -60px;
+  font-size:40px;
+  background:transparent;
+  top: 75%;
+  left: -55px;
+    top: -50px;
     position: absolute;
+}
+.slick-next:before {
+  display: block;
+  width:100px;
+  height:80px;
+  font-size:40px;
+  background:transparent;
+  top: -50px;
+    position: absolute;
+}
+.slick-track{
+  width: 11000px;
 }
 
 .home {
@@ -17,9 +32,9 @@
     overflow: hidden;
     position: relative;
     display: block;
-    width: 75%;
+    width: 150px;
     height: 300px;
-    padding-right: 5px;
+    margin-top: 20px;
   }
   ::before {
     content: "";
@@ -46,7 +61,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: $color-white-0;
     opacity: 0;
     visibility: hidden;
     transform: scale(0.8);
@@ -95,6 +110,7 @@
     animation-iteration-count: infinite;
     box-sizing: border-box;
     border: 1px solid black;
+    background: rgba($color: #000000, $alpha: 0.8);
 
     .button {
       background-image: linear-gradient(to right, #fbbd61, #ec7532);
@@ -111,24 +127,28 @@
     transform: scale(1);
   }
 }
-.pagination {
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// .pagination {
+//   color: $color-white-0;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  .page-link {
-    background: transparent !important;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 900;
-    padding-top: 15px;
-  }
+//   .page-link {
+//     background: transparent !important;
+//     border: none;
+//     cursor: pointer;
+//     font-size: 18px;
+//     font-weight: 900;
+//     padding-top: 15px;
+//   }
+// }
+.promotion{
+  padding-left: 10px;
+  
 }
 @media screen and (max-width: 1200px){
   .carousel-inner{
-    height: 300px;
+    height: 600px;
     width:100%;
   }
 

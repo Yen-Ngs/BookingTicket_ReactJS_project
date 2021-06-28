@@ -1,0 +1,61 @@
+$color-black-0: #000;
+$color-white-0: #fff;
+$color-orange-0: #ff7539;
+$color-orange-1: #ff3d00;
+$color-orange-2: #c30000;
+$color-orange-3: #fb4226;
+$color-gray-0: #f5f5f5;
+$color-gray-1: #afafaf;
+$color-gray-2: #424242;
+$color-gray-3: #616161;
+$color-gray-4: #9b9b9b;
+$color-gray-5: #e9e9e9;
+$color-gray-6: #bdbdbd;
+$color-green-0: #05572a;
+$color-green-1: #355a2b;
+$color-green-2: #9cff57;
+
+// variable font-size
+$fs-0: 14px;
+$fs-1: 10px;
+$fs-2: 12px;
+$fs-3: 16px;
+$fs-4: 18px;
+$fs-5: 20px;
+$fs-6: 13px;
+
+//variable margin
+$mg-0: 5px;
+$mg-1: 10px;
+$mg-2: 20px;
+$mg-3: 25px;
+$mg-4: 40px;
+$mg-5: 50px;
+
+//variable border-radius
+$border-radius: 2px;
+
+//variable padding
+$pd-0: 5px;
+$pd-1: 10px;
+$pd-2: 20px;
+$pd-3: 25px;
+$pd-4: 40px;
+$pd-5: 50px;
+
+//variable line-height
+$line-height-0: 1.43;
+
+//variable font-weight
+$fw-normal: normal;
+$fw-bold-0: 400;
+$fw-bold-1: 700;
+$fw-bold: bold;
+
+//break points
+$breakpoints: (
+  "extra-large": 1200px,
+  "large": 992px,
+  "medium": 768px,
+  "small": 576px
+);

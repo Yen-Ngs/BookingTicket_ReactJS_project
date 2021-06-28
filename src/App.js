@@ -23,7 +23,7 @@ function App() {
     <Router history={history}>
       <div className="App">
         {/* <Header/> */}
-        <Loading />
+        {/* <Loading /> */}
         <Switch>
           <HomeTemplate exact path='/home' Component={Home} />
           <AdminTemplate exact path='/contact' Component={Contact} />

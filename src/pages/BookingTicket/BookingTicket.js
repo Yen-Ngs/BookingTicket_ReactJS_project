@@ -1,98 +1,97 @@
-import React, { Fragment, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
-import { account } from '../../configs/setting';
-import { bookingTicketAction } from '../../redux/actions/BookingManagementAciton';
-import { getInforTicketRoom } from '../../redux/actions/MovieAction';
-import './BookingTicket.scss'
+import React, { useEffect } from "react";
+import Axios from "axios";
+import BookingTicketStep1 from "./BookingTicketStep1";
+import BookingTicketStep2 from "./BookingTicketStep2";
+import BookingTicketStep3 from "./BookingTicketStep3";
+import Loading from "../../components/Loading/Loading";
 
 export default function BookingTicket(props) {
-    const { ticketInfor } = useSelector(state => state.MovieReducer)
-    const { bookingChairList } = useSelector(state => state.BookingTicketReducer)
-    const dispatch = useDispatch();
-    let { id } = props.match.params;
-    useEffect(() => {
-        dispatch(getInforTicketRoom(id))
-    }, [])
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [chosenMovie, setchosenMovie] = React.useState({});
+  const [step, setStep] = React.useState(1);
+  const [numOfSeats, setNumOfSeats] = React.useState({});
 
-    // render lần đầu rỗng vì --> useEffect có [] = componentDidMout nên chạy lần 1 return arr rỗng
-    const renderChair = () => {
-        console.log('render_1', ticketInfor)
-        return ticketInfor.danhSachGhe?.map((item, index) => {
-            let indexBookingChair = bookingChairList.findIndex(isBooking => isBooking.maGhe === item.maGhe);
-            let classBookingChair = indexBookingChair !== -1 ? 'bookingChair' : '';
-            let classBookedChair = item.daDat ? 'bookedChair' : '';
-            console.log(item.daDat);
-            let classVipChair = item.loaiGhe === 'Vip' ? 'VipChair' : '';
-            return <Fragment key={index}>
-                <button className={`chair ${classBookingChair} ${classVipChair} ${classBookedChair}`} disabled={item.daDat} onClick={() => {
-                    dispatch({
-                        type: 'BOOKING_CHAIR',
-                        item
-                    })
-                }}>
-                    {item.daDat === true ? 'X' : item.stt}
+  //Lấy số lượng ghế đã chọn ở bước 1 truyền sang bước 2
+  const nextStep = (step, numOfSeats) => {
+    setNumOfSeats(numOfSeats);
+    setStep(step);
+  };
 
-                </button>
-                {(index + 1) % 16 === 0 ? <br /> : ''}
+  const backStep = () => {
+    setStep(1);
+  };
+  const id = props.match.params.id;
+  useEffect(() => {
+    Axios({
+      method: "GET",
+      url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
+    })
+      .then(result => {
+        setchosenMovie(result.data);
+        setIsLoading(false);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-            </Fragment>
-        })
+  const renderStepPage = () => {
+    switch (step) {
+      case 1:
+        return (
+          <BookingTicketStep1
+            id={id}
+            history={props.history}
+            prePage={props.history.location.prePage}
+            chosenMovie={chosenMovie}
+            nextStep={nextStep}
+          />
+        );
+      case 2:
+        return (
+          <BookingTicketStep2
+            prePage={props.history.location.prePage}
+            history={props.history}
+            backStep={backStep}
+            chosenMovie={chosenMovie}
+            numOfSeats={numOfSeats}
+          />
+        );
+      case 3:
+        return <BookingTicketStep3 />;
+      default:
+        break;
     }
-
-    const renderBookingChair = () => {
-        console.log(bookingChairList, "chair_render")
-        return bookingChairList?.map((bookingItem, index) => {
-            return <Fragment key={index}>
-                <span className="text-success">{bookingItem.stt}</span>
-            </Fragment>
-        })
-    }
-    const total = () => {
-        return bookingChairList.reduce((totalVND, bookingItem, index) => {
-            return totalVND += bookingItem.giaVe
-        }, 0)
-    }
-    if (!localStorage.getItem('account')) {
-        return <Redirect to='/login' />
-    }
-    // console.log(ticketInfor, 'thong tin dat ve');
-
-    return (
-        <div className="container-fluid">
-
-            <div className="row">
-                <div className="col-8 text-center mt-5">
-                    <img className="logo w-75" src="https://tix.vn/app/assets/img/icons/screen.png" alt="" />
-                    <hr />
-                    <div className="text-center">
-                        {renderChair()}
-                    </div>
-                </div>
-                <div className="col-4 text-center mt-5 text-white">
-                    <div className="display-4 text-success">{total().toLocaleString()}VND</div>
-                    <hr />
-                    <img src={ticketInfor.thongTinPhim?.hinhAnh} height={250} alt="123" />
-                    <h3>{ticketInfor.thongTinPhim?.tenPhim}</h3>
-
-                    <div>Adress:{ticketInfor.thongTinPhim?.diaChi}</div>
-                    <div>Schedule:{ticketInfor.thongTinPhim?.ngayChieu} - {ticketInfor.thongTinPhim?.gioChieu}</div>
-                    <hr />
-                    <div className="text-warning text-left">
-                        {renderBookingChair()}
-                    </div>
-                    <button className="w-75 btn btn-success display-4" onClick={() => {
-                        let userLogin = JSON.parse(localStorage.getItem(account))
-
-                        let bookingInfor = {
-                            "maLichChieu": props.match.params.id,
-                            "danhSachVe": bookingChairList,
-                            "taiKhoanNguoiDung": userLogin.taiKhoan
-                        }
-                        dispatch(bookingTicketAction(bookingInfor))
-                    }}>Booking Tickets</button>
-                </div>
-            </div>
+  };
+  return (
+    <div className="checkout text-white">
+      <div className="step-checkout">
+        <div className="step-checkout__left">
+          <ul>
+            {step === 1 ? (
+              <li className={`${step}` === "1" ? "active" : ""}>
+                <span className="mr-1">01</span>CHỌN LOẠI VÉ
+              </li>
+            ) : (
+              <li
+                onClick={backStep}
+                style={{ cursor: "pointer" }}
+                className={`${step}` === "1" ? "active" : ""}
+              >
+                <span className="mr-1">01</span>CHỌN LOẠI VÉ
+              </li>
+            )}
+            <li className={`${step}` === "2" ? "active" : ""}>
+              <span className="mr-1">02</span>CHỌN GHẾ & THANH TOÁN
+            </li>
+            <li className={`${step}` === "3" ? "active" : ""}>
+              <span className="mr-1">03</span>KẾT QUẢ ĐẶT VÉ
+            </li>
+          </ul>
         </div>
-    )
+      </div>
+      <div className="blank d-none d-md-block" style={{ height: "80px" }}></div>
+      {isLoading ? <Loading /> : renderStepPage()}
+    </div>
+  );
 }

@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none !important;
+  }
+  
+  a:hover {
+    text-decoration: none !important;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif !important;
+    font-size: 15px !important;
+  }
+  
+  header,
+  section,
+  footer,
+  aside,
+  nav,
+  main,
+  article,
+  figure {
+    display: block;
+  }
+  

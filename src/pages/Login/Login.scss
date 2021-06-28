@@ -1,23 +1,24 @@
-
+@import '../../style/Helper/mixin.scss';
+@import '../../style/Helper/variable.scss';
 .login{
    .login-wrap{
        padding:20px !important;
        width:50%;
     h3{
-        color:whitesmoke;
+        color:$color-white-0;
         width: 100%;
         font-size: 40px;
     }
    }
    .signup{
-       color: white;
+       color: $color-white-0;
     //    background-color: linear-gradient(to right,rgba(34, 11, 53,0.5),rgba(20, 5, 53, 0.7),rgba(12, 2, 39, 0.8),rgb(5, 1, 19));
     //    border: 1px solid rgba(51, 26, 51,0.9) ;
        border-radius: 5px;
        font-size: 20px;
    }
    label{
-       color:white;
+       color:$color-white-0;
 
    }
    .social-icon{
@@ -27,7 +28,7 @@
    .btn{
        background-color: rgba(59, 16, 59, 0.9)!important;
     //    border: 1px solid rgba(51, 26, 51,0.2);
-       color:white;
+       color:$color-white-0;
 
    }
 

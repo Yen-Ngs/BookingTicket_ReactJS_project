@@ -22,6 +22,26 @@ export const getMovieAction = () => {
         })
     }
 }
+export const getMovieAction2 = () => {
+    return async (dispatch) => {
+        dispatch({
+            type: 'openLoading'
+        })
+        setTimeout(async () => {
+            const result = await axios({
+                url: `${domain}/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02`,
+                method: 'GET'
+            });
+            dispatch({
+                type: 'GET_FILMS',
+                arrFilms: result.data
+            });
+            dispatch({
+                type: 'closeLoading'
+            }, 1000)
+        })
+    }
+}
 export const getDetails = (idFilm) => {
     return async (dispatch) => {
         try {

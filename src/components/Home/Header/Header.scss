@@ -1,3 +1,7 @@
+@import '../../../style/Helper/mixin.scss';
+@import '../../../style/Helper/variable.scss';
+@import '../../../style/base/reset.scss';
+@import '../../../style/Helper/extend.scss';
 .navbar{
     margin-bottom: 5px;
     background-color: transparent !important;
@@ -15,13 +19,22 @@
     }
     .activeNavItem{
         // background-color: white;
-        color:#f1ecf3 !important;
+        color:$color-white-0 !important;
         font-weight: 500;
         font-family: fantasy;
         font-size: 30px;
-        
-        
-
+    }
+    .infor{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        padding-right: 10px;
+        border: transparent;
+       
+    }
+    .btn-outline-light:hover {
+        background-color: transparent;
     }
     
 }
+
